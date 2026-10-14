@@ -1,0 +1,148 @@
+# --- 1. CONFIGURATION DES CHEMINS ET VARIABLES ---
+$TargetDir      = "C:\Tests"
+$ReferenceImage  = Join-Path $TargetDir "baseline_accueil.png"
+$CurrentImage    = Join-Path $TargetDir "current_accueil.png"
+$DiffImage       = Join-Path $TargetDir "diff_accueil.png"
+$ReportPath      = Join-Path $TargetDir "rapport_visuel.html"
+$Url             = "https://yello.de"
+
+# SÉCURITÉ : Forcer la création du dossier de stockage s'il n'existe pas
+if (-not (Test-Path $TargetDir)) {
+    New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
+}
+
+# --- 2. CAPTURE D'ÉCRAN AUTOMATISÉE ---
+Write-Host "Navigation vers $Url et prise de capture d'écran..." -ForegroundColor Cyan
+
+try {
+    # Utilise la CLI Playwright pour prendre une capture d'écran complète
+    # Nécessite Node.js et Playwright installés (npx doit être disponible dans le PATH)
+    & npx playwright screenshot $Url --path="$CurrentImage" --full-page
+} catch {
+    Write-Error "Échec lors de l'exécution de Playwright : $_"
+}
+
+if (-not (Test-Path $CurrentImage)) {
+    Write-Error "Échec critique : La capture d'écran n'a pas pu être générée par Playwright."
+    exit 1
+}
+
+# --- 3. RECHERCHE DE L'EXÉCUTABLE IMAGEMAGICK ---
+$MagickPath = Get-ChildItem -Path "C:\Program Files" -Filter "magick.exe" -Recurse -ErrorAction SilentlyContinue |
+              Select-Object -First 1 -ExpandProperty FullName -ErrorAction SilentlyContinue
+
+if (-not $MagickPath) {
+    $MagickPath = "C:\ImageMagick\magick.exe"
+}
+
+if (-not (Test-Path $MagickPath)) {
+    Write-Error "Échec critique : ImageMagick est introuvable sur le système (C:\Program Files ou C:\ImageMagick)."
+    exit 1
+}
+
+# Initialisation des variables d'état pour le rapport
+$StatusMessage = "Initialisation"
+$StatusClass   = "info"
+
+# --- 4. LOGIQUE DE COMPARAISON VISUELLE ---
+if (Test-Path $ReferenceImage) {
+    Write-Host "Comparaison avec l'image de référence (Baseline) en cours..." -ForegroundColor Cyan
+
+    $args = @("compare", "-metric", "AE", "-fuzz", "5%", $ReferenceImage, $CurrentImage, $DiffImage)
+
+    $proc = Start-Process -FilePath $MagickPath -ArgumentList $args -NoNewWindow -PassThru -WindowStyle Hidden
+    $proc.WaitForExit()
+    $exitCode = $proc.ExitCode
+
+    # ImageMagick 'compare' : 0 = identical, 1 = different pixels, >1 = error
+    if ($exitCode -eq 0) {
+        $StatusMessage = "✅ Succès : Aucun changement visuel détecté sur la page."
+        $StatusClass   = "success"
+        if (Test-Path $DiffImage) { Remove-Item $DiffImage -Force -ErrorAction SilentlyContinue }
+    } elseif ($exitCode -eq 1) {
+        $StatusMessage = "❌ Alerte : Une régression visuelle a été détectée !"
+        $StatusClass   = "danger"
+    } else {
+        $StatusMessage = "⚠️ Erreur lors de la comparaison (ImageMagick exit code $exitCode)."
+        $StatusClass   = "warning"
+    }
+} else {
+    Write-Host "Première exécution : Enregistrement de la Baseline..." -ForegroundColor Yellow
+    Copy-Item -Path $CurrentImage -Destination $ReferenceImage -Force
+    $StatusMessage = "📸 Première exécution : Image de référence (Baseline) enregistrée avec succès."
+    $StatusClass   = "warning"
+}
+
+# --- 5. GÉNÉRATION DU RAPPORT HTML VISUEL ---
+if (Test-Path $DiffImage) {
+    $HtmlDiffSection = "<img src='file:///$DiffImage' alt='Diff ImageMagick'>"
+} else {
+    $HtmlDiffSection = "<span class='missing-img'>Aucune différence visuelle détectée ou c'est le premier test.</span>"
+}
+
+$now = Get-Date -Format "dd/MM/yyyy à HH:mm:ss"
+
+$HtmlContent = @"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport de Test Visuel - $Url</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; padding: 30px; margin: 0; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        h1 { color: #333; margin-top: 0; font-size: 28px; }
+        .status-box { padding: 15px 20px; border-radius: 6px; font-size: 16px; font-weight: 600; margin-bottom: 25px; border-left: 5px solid; }
+        .success { background-color: #d4edda; color: #155724; border-color: #28a745; }
+        .danger { background-color: #f8d7da; color: #721c24; border-color: #dc3545; }
+        .warning { background-color: #fff3cd; color: #856404; border-color: #ffc107; }
+        .info { background-color: #d1ecf1; color: #0c5460; border-color: #17a2b8; }
+        .grid { display: flex; flex-wrap: wrap; gap: 25px; }
+        .card { flex: 1; min-width: 380px; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .card h3 { margin: 0; padding: 14px; background: #f6f8fa; border-bottom: 1px solid #e1e4e8; text-align: center; font-size: 16px; color: #444; }
+        .img-container { padding: 15px; text-align: center; background: #fafafa; display: flex; align-items: center; justify-content: center; min-height: 250px; }
+        img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+        .missing-img { color: #999; font-style: italic; font-size: 14px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rapport d'automatisation visuelle</h1>
+        <div class="status-box $StatusClass">$StatusMessage</div>
+        <p style="color: #666; margin-bottom: 25px;"><strong>URL ciblée :</strong> <a href="$Url" target="_blank">$Url</a> | <strong>Généré le :</strong> $now</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>1. Référence (Baseline)</h3>
+                <div class="img-container">
+                    <img src="file:///$ReferenceImage" alt="Baseline">
+                </div>
+            </div>
+            <div class="card">
+                <h3>2. Capture Actuelle</h3>
+                <div class="img-container">
+                    <img src="file:///$CurrentImage" alt="Current Snapshot">
+                </div>
+            </div>
+            <div class="card">
+                <h3>3. Différences (ImageMagick)</h3>
+                <div class="img-container">
+                    $HtmlDiffSection
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+"@
+
+# Écriture propre du fichier HTML (Encodage UTF8 pour éviter les problèmes d'accents)
+Set-Content -Path $ReportPath -Value $HtmlContent -Encoding UTF8
+Write-Host "Rapport HTML généré avec succès : $ReportPath" -ForegroundColor Green
+
+# --- 6. OUVERTURE DANS LE NAVIGATEUR ---
+try {
+    Start-Process -FilePath $ReportPath
+} catch {
+    Write-Warning "Impossible d'ouvrir automatiquement le rapport : $_"
+}
