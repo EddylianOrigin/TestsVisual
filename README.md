@@ -10,32 +10,31 @@
 ---
 
 ## 🌍 Why This Exists
-A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright, javascript and Powershell 
-
+A lot of companies nowadays are trying to implement or have a short visual test of a website with a short report at the end, and this little experimental repo shows an easy way to solve this challenge using ImageMagick, Playwright, JavaScript, and Powershell implement
 
 ---
 
 ## 🎛️ What This Thing Does
 The concept looks really simple:
-- First steps making full screenshots of all possible page available or accessible from the webAPP or Wesite with the Script.
+- First steps: make full screenshots of all possible pages available or accessible from the web app or website with the Script.
 - Rename the first generated repo as **baseline**.
-- Then a couple of hour later, run again the Script, of course after installed and set all possible requirements
-- Wait the Time the Process finish
-- (Process ended) A dashboard with Result of the comparison between the baseline and the current State of the Website screenshots should be visible.
+- Then, a couple of hours later, run the Script again, of course after installing and setting all possible requirements
+- Wait for the process to finish
+- (Process ended) A dashboard with results of the comparison between the baseline and the current State of the Website screenshots should be visible.
 
 
 ## ⚡ Quick Start
 - Clone the Repo locally
-- sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
-- Download ImageMagick using Winget command: ``winget install ImageMagick.ImageMagick``
-- Install playwright using the command: ``npx playwright install``
-- Set the Url of your website on the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
+- Sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
+- Download ImageMagick using the Winget command: ``winget install ImageMagick.ImageMagick``
+- Install Playwright using the command: ``npx playwright install``
+- Set the URL of your website in the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
 - Run the Script using this command:
   `` .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 ``
   
-- Wait the process end
+- Wait for the process to end
 - See the results
-  **Remarks:** If nothing happens you should get a error message showing you, the missing stuffs or librairies and advices.
+  **Remarks:** If nothing happens, you should get an error message showing you the missing stuff or libraries and advice.
 
 ---
 
@@ -43,11 +42,11 @@ The concept looks really simple:
 
 ## 🧭 What's Next
 
-**First — thank you to everyone who are going to test this little experimental tool**
+**First — thank you to everyone who is going to test this little experimental tool**
 
-**please don't forget to like the repo to encourage me**.
+** Please don't forget to like the repo to encourage me**.
 
-**Let's see guys...**
+**Let's see, guys...**
 
 **🌐 Website - Visual Testing**
 
