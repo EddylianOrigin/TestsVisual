@@ -28,7 +28,9 @@ The concept looks really simple:
 - Download ImageMagick using Winget
 - Install playwright
 - Set the Url of your website on the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
-- Run the Script using the command ( " .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 )
+- Run the Script using this command:
+  `` .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 ``
+  
 - Wait the process end
 - See the results
   **Remarks:** If nothing happens you should get a error message showing you, the missing stuffs or librairies and advices.
