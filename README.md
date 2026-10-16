@@ -17,7 +17,7 @@ A lot of company nowadays are trying to implements or having a short visual Test
 ## 🎛️ What This Thing Does
 The concept looks really simple:
 - First steps making full screenshots of all possible page available or accessible from the webAPP or Wesite with the Script.
-- Rename the first generated repo as Baseline
+- Rename the first generated repo as **baseline**.
 - Then a couple of hour later, run again the Script, of course after installed and set all possible requirements
 - Wait the Time the Process finish
 - (Process ended) A dashboard with Result of the comparison between the baseline and the current State of the Website screenshots should be visible.
@@ -25,6 +25,7 @@ The concept looks really simple:
 
 ## ⚡ Quick Start
 - Clone the Repo locally
+- sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
 - Download ImageMagick using Winget command: ``winget install ImageMagick.ImageMagick``
 - Install playwright using the command: ``npx playwright install``
 - Set the Url of your website on the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
