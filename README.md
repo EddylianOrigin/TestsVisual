@@ -15,7 +15,7 @@ A lot of company nowadays are trying to implements or having a short visual Test
 ---
 
 ## 🎛️ What This Thing Does
-The concept is looks really simple:
+The concept looks really simple:
 - First steps making full screenshots of all possible page available or accessible from the webAPP or Wesite with the Script.
 - Rename the first generated repo as Baseline
 - Then a couple of hour later, run again the Script, of course after installed and set all possible requirements
