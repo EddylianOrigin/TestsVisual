@@ -9,7 +9,7 @@
 ---
 
 ## 🌍 Why This Exists
-A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright install from dotnet, javascript and Powershell 
+A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright install, javascript and Powershell 
 
 
 ---
@@ -25,8 +25,8 @@ The concept looks really simple:
 
 ## ⚡ Quick Start
 - Clone the Repo locally
-- Download ImageMagick using Winget
-- Install playwright
+- Download ImageMagick using Winget command: ``winget install ImageMagick.ImageMagick``
+- Install playwright using the command: ``npx playwright install``
 - Set the Url of your website on the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
 - Run the Script using this command:
   `` .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 ``
