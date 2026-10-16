@@ -39,7 +39,9 @@ The concept looks really simple:
 
 ## 🧭 What's Next
 
-First — thank you. To everyone who are going to test this little experimental tool and **please don't forget to like the repo to encourage me**.
+**First — thank you to everyone who are going to test this little experimental tool**
+
+**please don't forget to like the repo to encourage me**.
 
 **Let's see guys...**
 
