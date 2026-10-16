@@ -9,7 +9,7 @@
 ---
 
 ## 🌍 Why This Exists
-A lot of company now ahead are trying to implements or having a short automation for visual Testing website and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright install from dotnet, javascript and Powershell 
+A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright install from dotnet, javascript and Powershell 
 
 
 ---
