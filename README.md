@@ -5,11 +5,12 @@
 
 ### A Comparator helping by regression Testing and provides a short report at the end!!
 
+<img width="1897" height="1245" alt="image" src="https://github.com/user-attachments/assets/ca78a297-d087-405b-ad1b-20383c7f4cca" />
 
 ---
 
 ## 🌍 Why This Exists
-A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright install, javascript and Powershell 
+A lot of company nowadays are trying to implements or having a short visual Testing of website with short report at the End and this little experimental repo show a easy way to solve this challenge using ImageMagick, Playwright, javascript and Powershell 
 
 
 ---
