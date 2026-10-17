@@ -24,6 +24,12 @@ The concept looks really simple:
 
 
 ## ⚡ Quick Start
+
+- git clone https://github.com/...
+- cd EddylianOrigin
+- powershell -ExecutionPolicy Bypass -File install.ps1
+
+(**Remarks:** The dependencies should be installed automatically after the previous steps. If not follow the Steps below or debug yourself ;) )
 - Clone the Repo locally
 - Sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
 - Download ImageMagick using the Winget command: ``winget install ImageMagick.ImageMagick``
@@ -34,8 +40,19 @@ The concept looks really simple:
   
 - Wait for the process to end
 - See the results
+  
   **Remarks:** If nothing happens, you should get an error message showing you the missing stuff or libraries and advice.
 
+### Expected Dependencies
+ .NET 8+
+
+ Node.js 20+
+
+ Playwright
+
+ ImageMagick 7.x (Q16 HDRI)
+
+	**Remarks:** No ImageMagick Download: https://imagemagick.org/script/download.php
 ---
 
 
