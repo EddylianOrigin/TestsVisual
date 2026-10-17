@@ -3,14 +3,14 @@
 # 🌐 Website - Visual Testing
 
 
-### A Comparator helping by regression Testing and provides a short report at the end!!
+### A Comparator helping by regression Testing and provides a short report at the end !!
 
 <img width="1897" height="1245" alt="image" src="https://github.com/user-attachments/assets/ca78a297-d087-405b-ad1b-20383c7f4cca" />
 
 ---
 
 ## 🌍 Why This Exists
-A lot of companies nowadays are trying to implement or have a short visual test of a website with a short report at the end, and this little experimental repo shows an easy way to solve this challenge using ImageMagick, Playwright, JavaScript, and Powershell implement
+A lot of companies nowadays are trying to implement or have a short visual test of a website with a short report at the end, and this little experimental repo shows an easy way to solve this challenge using ImageMagick, Playwright, JavaScript, and PowerShell.
 
 ---
 
@@ -34,7 +34,11 @@ The concept looks really simple:
  
  ``powershell -ExecutionPolicy Bypass -File install.ps1``
 
-(**Remarks:** The dependencies should be installed automatically after the previous steps. If not follow the Steps below or debug yourself. 😉 )
+ Run the Script using this command, or configure the test-visuel script aligned with your requirements before running it:
+  `` .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 ``
+
+(**Remarks:** The dependencies should be installed automatically after the previous steps. If not, follow the Steps below or debug yourself. 😉 )
+
  Clone the Repo locally
 
  Sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
@@ -52,7 +56,7 @@ The concept looks really simple:
 
 **See the results**
   
-  **Remarks:** If nothing happens, you should get an error message showing you the missing stuff or libraries and advice.
+  **Remarks:** If nothing happens, you should get an error message showing you the missing files or libraries and advice.
 
 ### Expected Dependencies
  .NET 8+
