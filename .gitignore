@@ -107,3 +107,32 @@ pnpm-lock.yaml
 # Temporary files
 *.tmp
 *.temp
+############################
+# Git internal / merge junk
+############################
+
+# Vim swap files
+*.swp
+*.swo
+*.swm
+
+# Git merge temporary files
+.git/MERGE_MSG
+.git/COMMIT_EDITMSG
+.git/REBASE_MERGE/
+.git/REBASE_APPLY/
+.git/CHERRY_PICK_HEAD
+.git/ORIG_HEAD
+
+############################
+# Edge / Copilot metadata pollution
+############################
+
+# Remove accidental metadata blocks injected by Edge
+edge_all_open_tabs*
+WebsiteContent_*
+*.metadata.json
+*.edge.json
+
+#remove files
+test-visuel2.ps1
