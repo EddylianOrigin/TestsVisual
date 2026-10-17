@@ -28,11 +28,11 @@ The concept looks really simple:
 
 ## ⚡ Quick Start
 
- git clone https://github.com/...
+ ``git clone https://github.com/EddylianOrigin/TestsVisual.git``
 
- cd EddylianOrigin
+ ``cd EddylianOrigin``
  
- powershell -ExecutionPolicy Bypass -File install.ps1
+ ``powershell -ExecutionPolicy Bypass -File install.ps1``
 
 (**Remarks:** The dependencies should be installed automatically after the previous steps. If not follow the Steps below or debug yourself. 😉 )
  Clone the Repo locally
