@@ -1,0 +1,109 @@
+############################
+# .NET / C# / Visual Studio
+############################
+
+# Build outputs
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.db
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Rider / JetBrains
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+# Publish
+publish/
+dist/
+
+############################
+# Node.js / Playwright
+############################
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Playwright browser binaries
+playwright/.cache/
+playwright-report/
+test-results/
+trace.zip
+*.trace
+*.zip
+
+############################
+# PowerShell scripts outputs
+############################
+
+# Visual testing output folders
+run_*/
+baseline/
+diff_*/
+
+# Generated screenshots
+*.png
+*.jpg
+*.jpeg
+
+# HTML reports
+*.html
+
+############################
+# OS / Editor junk files
+############################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# VS Code
+.vscode/
+
+############################
+# Sensitive / unwanted files
+############################
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Backup files
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
