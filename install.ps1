@@ -1,8 +1,33 @@
 Write-Host "=== Installation du projet EddylianOrigin ===" -ForegroundColor Cyan
 
 # --- Détection OS ---
-$os = $PSVersionTable.OS
-$isWindows = $os -match "Windows"
+function Is-Windows {
+    try {
+        $null = Get-CimInstance Win32_OperatingSystem -ErrorAction Stop
+        return $true
+    } catch {
+        return $false
+    }
+}
+
+function Get-WindowsVersion {
+    try {
+        $ver = (Get-CimInstance Win32_OperatingSystem).Version
+        return [version]$ver
+    } catch {
+        return $null
+    }
+}
+
+$isWindows = Is-Windows
+$winVer    = Get-WindowsVersion
+
+if ($isWindows) {
+    Write-Host "Système détecté : Windows ($($winVer.ToString()))" -ForegroundColor Cyan
+} else {
+    Write-Host "Système détecté : Linux/macOS" -ForegroundColor Cyan
+}
+
 
 Write-Host "Système détecté : $os" -ForegroundColor Cyan
 
