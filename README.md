@@ -16,30 +16,41 @@ A lot of companies nowadays are trying to implement or have a short visual test 
 
 ## 🎛️ What This Thing Does
 The concept looks really simple:
-- First steps: make full screenshots of all possible pages available or accessible from the web app or website with the Script.
-- Rename the first generated repo as **baseline**.
-- Then, a couple of hours later, run the Script again, of course after installing and setting all possible requirements
-- Wait for the process to finish
-- (Process ended) A dashboard with results of the comparison between the baseline and the current State of the Website screenshots should be visible.
+ First steps: make full screenshots of all possible pages available or accessible from the web app or website with the Script.
+
+ Rename the first generated repo as **baseline**.
+ 
+ Then, a couple of hours later, run the Script again, of course after installing and setting all possible requirements
+ Wait for the process to finish.
+ 
+ (Process ended) A dashboard with results of the comparison between the baseline and the current State of the Website screenshots should be visible.
 
 
 ## ⚡ Quick Start
 
-- git clone https://github.com/...
-- cd EddylianOrigin
-- powershell -ExecutionPolicy Bypass -File install.ps1
+ git clone https://github.com/...
 
-(**Remarks:** The dependencies should be installed automatically after the previous steps. If not follow the Steps below or debug yourself ;) )
-- Clone the Repo locally
-- Sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
-- Download ImageMagick using the Winget command: ``winget install ImageMagick.ImageMagick``
-- Install Playwright using the command: ``npx playwright install``
-- Set the URL of your website in the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
-- Run the Script using this command:
+ cd EddylianOrigin
+ 
+ powershell -ExecutionPolicy Bypass -File install.ps1
+
+(**Remarks:** The dependencies should be installed automatically after the previous steps. If not follow the Steps below or debug yourself. 😉 )
+ Clone the Repo locally
+
+ Sometimes you could need to install dotnet with ``dotnet install`` (if it has not been done automatically)
+
+ Download ImageMagick using the Winget command: ``winget install ImageMagick.ImageMagick``
+
+ Install Playwright using the command: ``npx playwright install``
+
+ Set the URL of your website in the script "test-visuel.ps1" and adapt the configs aligned with your level of tolerance
+
+ Run the Script using this command:
   `` .\test-visuel.ps1 -BaseDir "C:\Tests" -MaxPages 500 ``
   
-- Wait for the process to end
-- See the results
+**Wait for the process to end**
+
+**See the results**
   
   **Remarks:** If nothing happens, you should get an error message showing you the missing stuff or libraries and advice.
 
@@ -63,7 +74,7 @@ The concept looks really simple:
 
 ** Please don't forget to like the repo to encourage me**.
 
-**Let's see, guys...**
+**Let's see, guys... 😉 **
 
 **🌐 Website - Visual Testing**
 
