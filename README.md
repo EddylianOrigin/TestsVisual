@@ -28,7 +28,7 @@ The concept looks really simple:
 
 ## ⚡ Quick Start
 
- ``git clone https://github.com/...``
+ ``git clone https://github.com/EddylianOrigin/TestsVisual.git``
 
  ``cd EddylianOrigin``
  
