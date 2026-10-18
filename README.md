@@ -76,9 +76,9 @@ The concept looks really simple:
 
 **First — thank you to everyone who is going to test this little experimental tool**
 
-** Please don't forget to like the repo to encourage me**.
+**Please don't forget to like the repo to encourage me**.
 
-**Let's see, guys... 😉 **
+**Let's see, guys... 😉**
 
 **🌐 Website - Visual Testing**
 
