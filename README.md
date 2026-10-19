@@ -30,7 +30,7 @@ The concept looks really simple:
 
  ``git clone https://github.com/EddylianOrigin/TestsVisual.git``
 
- ``cd EddylianOrigin``
+ ``cd to the repo path``
  
  ``powershell -ExecutionPolicy Bypass -File install.ps1``
 
@@ -67,7 +67,7 @@ The concept looks really simple:
 
  ImageMagick 7.x (Q16 HDRI)
 
-	**Remarks:** No ImageMagick Download: https://imagemagick.org/script/download.php
+	Remarks: No ImageMagick Download: https://imagemagick.org/script/download.php
 ---
 
 
