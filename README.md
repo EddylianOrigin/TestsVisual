@@ -5,7 +5,8 @@
 
 ### A Comparator helping by regression Testing and provides a short report at the end !!
 
-<img width="1897" height="1245" alt="image" src="https://github.com/user-attachments/assets/ca78a297-d087-405b-ad1b-20383c7f4cca" />
+<img width="949" height="623" alt="Screenshot 2026-10-16 110457" src="https://github.com/user-attachments/assets/6ceea101-ff01-48eb-b333-801fa49f4fb3" />
+
 
 ---
 
