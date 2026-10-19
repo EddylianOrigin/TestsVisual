@@ -7,7 +7,7 @@ Save this file as UTF-8 (with BOM).
 #>
 
 param(
-    [string]$Url = "https://yello.de",
+    [string]$Url = "",
     [string]$BaseDir = "C:\Tests",
     [int]$MaxPages = 100,
     [string]$Fuzz = "15%",                 # ImageMagick fuzz tolerance
