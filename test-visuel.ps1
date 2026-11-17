@@ -57,9 +57,21 @@ if (-not $capturedImages -or $capturedImages.Count -eq 0) {
 }
 
 # --- 2) Locate ImageMagick (magick.exe) ---
-$MagickPath = Get-ChildItem -Path "C:\Program Files" -Filter "magick.exe" -Recurse -ErrorAction SilentlyContinue |
-              Select-Object -First 1 -ExpandProperty FullName -ErrorAction SilentlyContinue
-if (-not $MagickPath) { $MagickPath = "C:\ImageMagick\magick.exe" }
+#$MagickPath = Get-ChildItem -Path "C:\Program Files" -Filter "magick.exe" -Recurse -ErrorAction SilentlyContinue |
+#              Select-Object -First 1 -ExpandProperty FullName -ErrorAction SilentlyContinue
+#if (-not $MagickPath) { $MagickPath = "C:\ImageMagick\magick.exe" }
+$MagickPath = ""
+if ($isWindows) {
+    $MagickPath = Get-ChildItem -Path "C:\Program Files" -Filter "magick.exe" -Recurse -ErrorAction SilentlyContinue |
+                  Select-Object -First 1 -ExpandProperty FullName -ErrorAction SilentlyContinue
+    if (-not $MagickPath) { $MagickPath = "C:\ImageMagick\magick.exe" }
+} elseif ($isMac) {
+    $MagickPath = Get-Command convert -ErrorAction SilentlyContinue
+    if (-not $MagickPath) { $MagickPath = "/usr/local/bin/convert" }
+} else { # Linux
+    $MagickPath = Get-Command convert -ErrorAction SilentlyContinue
+    if (-not $MagickPath) { $MagickPath = "/usr/bin/convert" }
+}
 if (-not (Test-Path $MagickPath)) {
     Write-Error "ImageMagick (magick.exe) not found. Install ImageMagick or adjust path."
     exit 1
